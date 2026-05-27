@@ -2,11 +2,11 @@
 
 ## Overview
 
-This repository documents my Active Directory home lab built using VMware Workstation Pro, Windows Server 2022, and a Windows client machine. The goal of this project is to practice Windows system administration, help desk support, Group Policy management, file sharing, permissions, and security policy tasks in a realistic virtual lab environment.
+This repository documents my Active Directory Help Desk Lab, a Windows Server home lab built to practice common IT support, systems administration, and help desk troubleshooting tasks.
 
-The lab is organized into multiple parts, starting with the initial domain setup and continuing into Group Policy, client domain joining, file sharing, File Server Resource Manager, user rights assignment, fine-grained password policies, service accounts, advanced file sharing permissions, inheritance, access-based enumeration, and common help desk support scenarios.
+The lab is designed around a small business-style Active Directory environment using Windows Server, Windows client machines, organizational units, users, groups, Group Policy Objects, file sharing, NTFS permissions, and help desk-style troubleshooting scenarios.
 
-This project is designed to demonstrate practical skills relevant to help desk, IT support, desktop support, and junior system administration roles.
+The goal of this project is to build practical experience that applies directly to help desk, IT support, desktop support, junior system administrator, and cybersecurity support roles.
 
 ---
 
@@ -16,144 +16,262 @@ This project is designed to demonstrate practical skills relevant to help desk, 
 |---|---|
 | Hypervisor | VMware Workstation Pro 17 |
 | Server OS | Windows Server 2022 |
+| Client OS | Windows 10 Enterprise |
 | Domain Controller | DC01 |
 | Domain | MumenLab.local |
-| Client OS | Windows 10 Enterprise |
-| Client Name | COMPUTER01 |
-| Main Tools | Active Directory Users and Computers, Group Policy Management Console, Active Directory Administrative Center, File Server Resource Manager, Command Prompt, Remote Desktop Connection |
-
----
-
-## Project Parts
-
-| Part | Description | Status |
-|---|---|---|
-| [Part 1: AD Setup, OUs, Groups, and Users](Part1-AD-Setup-OUs-Groups-Users/) | Created the Windows Server VM, installed Active Directory Domain Services, promoted the server to a domain controller, and created OUs, groups, and users. | Complete |
-| [Part 2: Group Policy Objects](Part2-Group-Policy-Objects/) | Created and configured Group Policy Objects, including password policy, account lockout policy, drive mapping, desktop wallpaper, Control Panel restrictions, and removable storage restrictions. | Complete |
-| [Part 3: Client VM and GPO Testing](Part3-Client-VM-and-GPO-Testing/) | Joined a Windows client VM to the domain, logged in as a domain user, moved the computer object into the correct OU, tested GPO application, verified policies with `gpresult`, and tested account lockout behavior. | Complete |
-| [Part 4: File Sharing and FSRM](Part4-File-Sharing-and-FSRM/) | Created a shared folder, configured share and NTFS permissions, manually mapped a network drive, automated drive mapping through GPO, and used File Server Resource Manager for quotas and file screening. | Complete |
-| [Part 5: User Rights and Fine-Grained Password Policies](Part5-User-Rights-and-Fine-Grained-Password-Policies/) | Configured user rights assignment policies, tested local and Remote Desktop logon restrictions, and created fine-grained password policies using Active Directory Administrative Center. | Complete |
-| Part 6: Service Accounts and Single-Purpose Computers | Planned section for implementing service accounts and single-purpose computer scenarios in the Windows Server home lab. | Planned |
-| Part 7: NTFS vs Share Permissions | Planned section for deeper file sharing permissions, including the difference between NTFS permissions and share permissions. | Planned |
-| Part 8: Effective Permissions and Inheritance | Planned section for advanced file sharing topics, including permission inheritance and effective access testing. | Planned |
-| Part 9: Access-Based Enumeration | Planned section for configuring access-based enumeration so users only see shared folders they have permission to access. | Planned |
-| Part 10: Common Help Desk Tasks | Planned section for realistic help desk workflows such as password resets, account unlocks, group membership changes, user support, access troubleshooting, and ticket-style documentation. | Planned |
-
----
-
-## Skills Demonstrated
-
-- Windows Server 2022 administration
-- Active Directory Domain Services
-- Domain controller setup
-- Organizational Unit management
-- User and group administration
-- Group Policy Object creation and linking
-- Password and account lockout policy configuration
-- Windows client domain joining
-- DNS troubleshooting for domain communication
-- Group Policy testing with `gpupdate` and `gpresult`
-- File sharing and network drive mapping
-- Share permissions and NTFS permissions
-- File Server Resource Manager configuration
-- Quota and file screening management
-- User Rights Assignment configuration
-- Remote Desktop access control
-- Fine-Grained Password Policy configuration
-- Help desk troubleshooting scenarios
-- Technical documentation
-
----
-
-## Help Desk Relevance
-
-This lab focuses on tasks commonly performed in help desk, desktop support, and junior system administration environments.
-
-| Help Desk / IT Task | Lab Example |
-|---|---|
-| User account administration | Created and organized domain users |
-| Group management | Created security groups and added users to groups |
-| OU management | Organized users and computers into OUs |
-| Password policy support | Configured and tested password requirements |
-| Account lockout support | Tested account lockout and unlock behavior |
-| Workstation support | Joined a Windows client to the domain |
-| DNS troubleshooting | Fixed client DNS settings for domain communication |
-| Group Policy support | Created, linked, updated, and tested GPOs |
-| Access restriction testing | Blocked Control Panel and removable storage through GPO |
-| Network drive support | Manually and automatically mapped shared drives |
-| File share support | Configured shared folders and permissions |
-| Storage management | Configured quotas and file screening with FSRM |
-| Server access control | Restricted local and Remote Desktop logons |
-| Security administration | Created fine-grained password policies for different groups |
-| Planned help desk workflows | Password resets, account unlocks, access requests, group membership changes, and ticket-style troubleshooting |
+| Client Computer | COMPUTER01 |
+| Main Tools | Active Directory Users and Computers, Group Policy Management Console, File Explorer, FSRM, CMD, RDP |
+| Main Focus | Active Directory administration, Group Policy, shared folder access, NTFS permissions, and help desk troubleshooting |
 
 ---
 
 ## Repository Structure
 
 ```text
-Active-Directory-Lab/
+Active-Directory-Lab-GitHub/
+│
 ├── README.md
+│
 ├── Part1-AD-Setup-OUs-Groups-Users/
 │   ├── README.md
 │   └── screenshots/
+│
 ├── Part2-Group-Policy-Objects/
 │   ├── README.md
 │   └── screenshots/
+│
 ├── Part3-Client-VM-and-GPO-Testing/
 │   ├── README.md
 │   └── screenshots/
+│
 ├── Part4-File-Sharing-and-FSRM/
 │   ├── README.md
 │   └── screenshots/
+│
 ├── Part5-User-Rights-and-Fine-Grained-Password-Policies/
 │   ├── README.md
 │   └── screenshots/
-├── Part6-Service-Accounts-and-Single-Purpose-Computers/
+│
+├── Part6-NTFS-vs-Share-Permissions/
 │   ├── README.md
 │   └── screenshots/
-├── Part7-NTFS-vs-Share-Permissions/
-│   ├── README.md
-│   └── screenshots/
-├── Part8-Effective-Permissions-and-Inheritance/
-│   ├── README.md
-│   └── screenshots/
-├── Part9-Access-Based-Enumeration/
-│   ├── README.md
-│   └── screenshots/
-└── Part10-Common-Help-Desk-Tasks/
+│
+└── Part7-Help-Desk-Ticketing-Lab/
     ├── README.md
     └── screenshots/
 ```
 
 ---
 
-## Project Status
+## Completed Lab Parts
 
-This project is currently in progress.
-
-Completed:
-
-- Part 1: AD setup, OUs, groups, and users
-- Part 2: Group Policy Objects
-- Part 3: Client VM and GPO testing
-- Part 4: File sharing, mapped drives, and File Server Resource Manager
-- Part 5: User rights assignment and fine-grained password policies
-
-Planned:
-
-- Part 6: Service accounts and single-purpose computers
-- Part 7: NTFS vs share permissions
-- Part 8: Effective permissions and inheritance
-- Part 9: Access-based enumeration
-- Part 10: Common help desk tasks and ticket-style troubleshooting examples
+| Part | Topic | Status |
+|---|---|---|
+| [Part 1](Part1-AD-Setup-OUs-Groups-Users/) | Active Directory setup, OUs, groups, and users | Complete |
+| [Part 2](Part2-Group-Policy-Objects/) | Group Policy Objects | Complete |
+| [Part 3](Part3-Client-VM-and-GPO-Testing/) | Client VM domain join and GPO testing | Complete |
+| [Part 4](Part4-File-Sharing-and-FSRM/) | File sharing and FSRM | Complete |
+| [Part 5](Part5-User-Rights-and-Fine-Grained-Password-Policies/) | User rights and fine-grained password policies | Complete |
+| [Part 6](Part6-NTFS-vs-Share-Permissions/) | NTFS vs share permissions | Complete |
+| Part 7 | Help desk ticketing lab with osTicket | Planned |
 
 ---
 
-## Summary
+## Part 1: Active Directory Setup, OUs, Groups, and Users
 
-This project demonstrates a practical Active Directory environment with real help desk and system administration workflows. It includes domain setup, user and group management, Group Policy configuration, domain client testing, shared folder access, mapped drives, storage controls, and security policy enforcement.
+In Part 1, I built the foundation of the Active Directory environment.
 
-Future parts will expand the lab into service accounts, advanced permissions, access-based enumeration, and common help desk tasks such as password resets, account unlocks, access requests, and troubleshooting user issues.
+Main tasks completed:
 
-The lab is designed to show hands-on experience with tools and tasks commonly used in entry-level IT support and junior system administration roles.
+- Created a Windows Server virtual machine
+- Installed Windows Server 2022
+- Installed the Active Directory Domain Services role
+- Promoted the server to a domain controller
+- Created the domain `MumenLab.local`
+- Created organizational units
+- Created security groups
+- Created domain users
+- Added users to the correct groups
+
+This part demonstrates the basic setup required for a domain-based Windows environment.
+
+---
+
+## Part 2: Group Policy Objects
+
+In Part 2, I configured Group Policy Objects to manage users and computers in the domain.
+
+Main tasks completed:
+
+- Created and managed GPOs using Group Policy Management Console
+- Configured password policy settings
+- Configured account lockout policy settings
+- Configured mapped network drives
+- Configured desktop wallpaper policy
+- Restricted Control Panel access
+- Disabled removable storage access
+
+This part demonstrates how centralized policies can be used to enforce settings across a domain.
+
+---
+
+## Part 3: Client VM and GPO Testing
+
+In Part 3, I created a Windows client VM and joined it to the domain.
+
+Main tasks completed:
+
+- Created a Windows client virtual machine
+- Configured DNS to point to the domain controller
+- Joined the client to `MumenLab.local`
+- Logged in using a domain user account
+- Verified the computer object in Active Directory
+- Moved the computer object to the correct OU
+- Linked GPOs to the correct OUs
+- Used `gpupdate /force` to refresh policies
+- Used `gpresult /r` to confirm applied policies
+- Tested Control Panel restriction
+- Tested account lockout and unlock behavior
+
+This part demonstrates real endpoint administration and policy troubleshooting.
+
+---
+
+## Part 4: File Sharing and FSRM
+
+In Part 4, I configured Windows file sharing and File Server Resource Manager.
+
+Main tasks completed:
+
+- Created a shared folder
+- Configured share permissions
+- Configured NTFS permissions
+- Accessed a shared folder using a UNC path
+- Mapped a network drive manually
+- Created a mapped drive GPO
+- Tested mapped drive deployment on the client
+- Installed File Server Resource Manager
+- Created a storage quota
+- Created a file screen
+- Verified FSRM configuration
+
+This part demonstrates shared folder management, mapped drive deployment, and basic file server controls.
+
+---
+
+## Part 5: User Rights and Fine-Grained Password Policies
+
+In Part 5, I configured user rights assignments and fine-grained password policies.
+
+Main tasks completed:
+
+- Created a user rights assignment GPO
+- Configured deny log on locally settings
+- Configured Remote Desktop logon settings
+- Tested restricted logon behavior
+- Opened Active Directory Administrative Center
+- Created fine-grained password policies
+- Applied password settings objects to specific users or groups
+
+This part demonstrates access control, logon restriction, and password policy management.
+
+---
+
+## Part 6: NTFS vs Share Permissions
+
+In Part 6, I focused on Windows file sharing permissions and realistic folder access scenarios.
+
+Main tasks completed:
+
+- Reviewed the difference between share permissions and NTFS permissions
+- Configured read-only access for Marketing Interns
+- Configured HR folder access for HR Staff only
+- Configured vendor upload access using restrictive permissions
+- Configured IT department access to a software folder
+- Disabled inheritance on a sensitive subfolder
+- Removed inherited permissions
+- Applied explicit permissions to Senior IT
+
+This part is directly relevant to help desk work because shared folder access issues are common in real IT support environments.
+
+---
+
+## Planned Part 7: Help Desk Ticketing Lab
+
+The next major section will be a practical help desk ticketing lab using osTicket.
+
+Planned tasks:
+
+- Install and configure osTicket
+- Create help desk agents
+- Create departments
+- Create help topics
+- Create SLA plans
+- Create realistic support tickets
+- Document troubleshooting steps
+- Resolve tickets using the Active Directory lab
+
+Planned ticket scenarios:
+
+- Password reset
+- Account unlock
+- New user onboarding
+- User offboarding
+- Add user to a security group
+- User cannot access shared folder
+- User cannot access mapped drive
+- User has incorrect folder permissions
+- User cannot log in due to account or GPO issue
+
+This section will connect the technical Active Directory tasks to a realistic help desk workflow.
+
+---
+
+## Skills Demonstrated
+
+| Skill Area | Examples |
+|---|---|
+| Active Directory Administration | Users, groups, OUs, domain join, computer objects |
+| Group Policy | Password policy, account lockout, drive mapping, restrictions |
+| Windows Server Administration | Domain controller setup, file sharing, FSRM |
+| Windows Client Administration | Domain login, DNS configuration, policy testing |
+| File Server Support | Share permissions, NTFS permissions, mapped drives |
+| Access Troubleshooting | User rights, group membership, folder permissions |
+| Help Desk Readiness | Account unlocks, access requests, shared folder issues |
+| Documentation | Step-by-step README files with screenshots |
+
+---
+
+## Why This Lab Matters
+
+This lab shows practical experience with tasks commonly handled by help desk and IT support teams.
+
+Examples include:
+
+- Creating and managing user accounts
+- Assigning users to security groups
+- Troubleshooting domain login issues
+- Applying and testing Group Policy
+- Managing shared folder access
+- Understanding NTFS and share permissions
+- Investigating why users can or cannot access resources
+- Documenting technical work clearly
+
+These skills are important for entry-level IT support, help desk, desktop support, junior system administrator, and cybersecurity support roles.
+
+---
+
+## Current Project Status
+
+Completed:
+
+- Part 1: Active Directory setup
+- Part 2: Group Policy Objects
+- Part 3: Client VM and GPO testing
+- Part 4: File sharing and FSRM
+- Part 5: User rights and fine-grained password policies
+- Part 6: NTFS vs share permissions
+
+Planned:
+
+- Part 7: Help desk ticketing lab using osTicket
